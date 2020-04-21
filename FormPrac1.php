@@ -28,7 +28,7 @@
 
 	body {
 		font-family: Arial, Helvetica, sans-serif;
-		background-color: black;
+		background-color: grey;
 	}
 
 	* {
@@ -37,7 +37,7 @@
 
 	.container {
 		padding: 50px;
-		margin: 20px 200px 20px 200px;
+		margin: 20px 50px 20px 50px;
 		background-color: white;
 	}
 
@@ -87,8 +87,8 @@
 <body>
 	
 	<?php
-    $mysqli = new mysqli("localhost", "root", "", "users");
-
+    $mysqli = new mysqli("localhost", "id13370844_root", "Ud(R7c}WSKD%z]aD", "id13370844_accounts");
+    
 	$nameerr = $emailerr = $mobileerr = $ageerr = " ";
 	$name = $email = $mobile = $age = " ";
 
@@ -140,7 +140,7 @@
 		}
         
         if(!$result) {
-            $emailerr = "Email already in use";
+            $emailerr = "Either user is Already registered or please check your email and mobile";
         }
 	}
 
@@ -149,6 +149,7 @@
 			$data = stripslashes($data);
 			return $data;
 		}
+		
 
 	?>
 
@@ -157,6 +158,7 @@
 	<div class="container">
 		<h1>Register</h1>
 		<p>Please fill in this form to create an acccount.</p>
+		 <span class="error"> <?php echo $emailerr;?></span>
 		<hr>
 
 		<label for="name"><b>Name</b><span class="error"> * <?php echo $nameerr;?></span></label>
@@ -169,7 +171,7 @@
 		<label for="age"><b>Age</b><span class="error">*<?php echo $ageerr;?></span></label>
 		<input type="number" name="age" placeholder="Enter Your Age" value="<?php echo $age;?>">
 
-		<label for="email"><b>Email</b> <span class="error">* <?php echo $emailerr;?></span></label>
+		<label for="email"><b>Email</b> <span class="error">*</label>
 		<input type="text" name="email" placeholder="Enter Email" required value="<?php echo $email;?>">
 
 		<label for="psw"><b>Password</b></label>
